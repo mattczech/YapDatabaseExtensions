@@ -459,7 +459,7 @@ extension YapDatabaseReadWriteTransaction: WriteTransactionType {
         }
     }
 
-    func removeAtIndex(_ index: YapDB.Index) {
+    public func removeAtIndex(_ index: YapDB.Index) {
         removeObject(forKey: index.key, inCollection: index.collection)
     }
 
