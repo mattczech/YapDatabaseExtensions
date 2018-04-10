@@ -610,9 +610,11 @@ public final class YapDBIndexCoder: NSObject, NSCoding, CodingProtocol {
         value = v
     }
 
-    public required init(coder aDecoder: NSCoder) {
-        let collection = aDecoder.decodeObject(forKey: "collection") as! String
-        let key = aDecoder.decodeObject(forKey: "key") as! String
+    public required init?(coder aDecoder: NSCoder) {
+        guard let collection = aDecoder.decodeObject(forKey: "collection") as? String,
+            let key = aDecoder.decodeObject(forKey: "key") as? String else {
+                return nil
+        }
         value = YapDB.Index(collection: collection, key: key)
     }
 
