@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "RCSYapDatabaseExtensions"
-  s.version           = "4.0.2"
+  s.version           = "4.0.3"
   s.summary           = "Helpers for using value types with YapDatabase."
   s.description       = <<-DESC
 

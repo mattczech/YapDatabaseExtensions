@@ -1,3 +1,7 @@
+# 4.0.3
+1. Don't use `!`, it trips up danger-swiftlint.
+2. Made `removeAtIndex` `public`.
+
 # 4.0.2
 1. Made `YapItem` properties `public`.
 
