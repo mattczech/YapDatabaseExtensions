@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'CocoaLumberjack', '~> 3.4.1'
   s.dependency 'ValueCoding', '~> 2.2.0'
-  s.dependency 'YapDatabase', '~> 3.0.2'
+  s.dependency 'YapDatabase', '~> 3.1.2'
 
   s.subspec 'Core' do |ss|
     ss.source_files = [

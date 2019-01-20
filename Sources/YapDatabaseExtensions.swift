@@ -73,8 +73,8 @@ public struct YapDB {
     
     - returns: the YapDatabase instance.
     */
-    public static func databaseNamed(_ name: String, operations: DatabaseOperationsBlock? = .none) -> YapDatabase {
-        let db =  YapDatabase(path: pathToDatabase(.documentDirectory, name: name, suffix: .none))
+    public static func databaseNamed(_ name: String, operations: DatabaseOperationsBlock? = .none) -> YapDatabase? {
+        guard let db = YapDatabase(path: pathToDatabase(.documentDirectory, name: name, suffix: .none)) else { return nil }
         operations?(db)
         return db
     }
@@ -105,7 +105,7 @@ public struct YapDB {
     
     - returns: the YapDatabase instance.
     */
-    public static func testDatabase(_ file: String = #file, test: String = #function, operations: DatabaseOperationsBlock? = .none) -> YapDatabase {
+    public static func testDatabase(_ file: String = #file, test: String = #function, operations: DatabaseOperationsBlock? = .none) -> YapDatabase? {
         let path = pathToDatabase(.cachesDirectory, name: (file as NSString).lastPathComponent, suffix: test.trimmingCharacters(in: CharacterSet(charactersIn: "()")))
         assert(!path.isEmpty, "Path should not be empty.")
         do {
@@ -113,7 +113,7 @@ public struct YapDB {
         }
         catch { }
 
-        let db =  YapDatabase(path: path)
+        guard let db =  YapDatabase(path: path) else { return nil }
         operations?(db)
         return db
     }
